@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/okex/adventure/wasm"
 	"log"
 	"os"
 
+	"github.com/okex/adventure/wasm"
+
 	"github.com/okex/adventure/evm"
+	"github.com/okex/adventure/tools/address"
 	"github.com/okex/adventure/tools/staking"
 	"github.com/okex/adventure/tools/version"
 	"github.com/spf13/cobra"
@@ -17,7 +19,7 @@ func main() {
 		Use:   "adventure",
 		Short: "A client tool for okchain",
 		Long: `⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏ ⛏
- .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------.  .----------------. 
+ .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------.  .----------------.
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
 | |      __      | || |  ________    | || | ____   ____  | || |  _________   | || | ____  _____  | || |  _________   | || | _____  _____ | || |  _______     | || |  _________   | |
 | |     /  \     | || | |_   ___ '.  | || ||_  _| |_  _| | || | |_   ___  |  | || ||_   \|_   _| | || | |  _   _  |  | || ||_   _||_   _|| || | |_   __ \    | || | |_   ___  |  | |
@@ -40,6 +42,7 @@ adventure is a very powerful cli tool for OKChain. It supports JSON-file and Sub
 	}
 
 	mainCmd.AddCommand(
+		address.AddressCmd(),
 		staking.QueryValidatorsCmd(),
 		version.VersionCmd(),
 		evm.EvmCmd(),
